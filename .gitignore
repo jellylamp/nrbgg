@@ -1,0 +1,19 @@
+.DS_Store
+.editorconfig
+vendor/*
+*.patch
+node_modules
+
+web/files
+web/sites/*/files
+web/sites/*/private-files
+web/sites/*/settings.local.php
+web/sites/*/services.local.yml
+
+# Composer managed directories
+web/core/
+web/modules/contrib/
+web/themes/contrib/
+web/profiles/contrib/
+web/libraries/
+vendor/
