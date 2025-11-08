@@ -1,6 +1,6 @@
 name: nrbgg
 type: theme
-base theme: tara
+base theme: olivero
 description: A flexible theme with a responsive, mobile-first layout.
 package: Custom
 core_version_requirement: ^10 || ^11

@@ -1,0 +1,32 @@
+uuid: a2299f09-ecc2-4284-a799-d128355ebb3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.uploaded_video.field_media_video_file
+    - image.style.medium
+    - media.type.uploaded_video
+  module:
+    - image
+id: media.uploaded_video.media_library
+targetEntityType: media
+bundle: uploaded_video
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_video_file: true
+  name: true
+  uid: true

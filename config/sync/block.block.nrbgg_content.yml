@@ -1,0 +1,22 @@
+uuid: bae86453-132c-46a5-8c9b-743bc0c449da
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nrbgg
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: nrbgg_content
+theme: nrbgg
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: a569fcb2-3656-49af-82e9-bcc442c9bb46
+langcode: en
+status: false
+dependencies:
+  theme:
+    - nrbgg
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: nrbgg_primary_admin_actions
+theme: nrbgg
+region: header
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

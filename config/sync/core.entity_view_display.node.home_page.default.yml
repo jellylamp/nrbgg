@@ -1,0 +1,26 @@
+uuid: 610e8966-2d5f-499d-a48b-5fd9902f9fe8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.home_page.field_hero_banner
+    - node.type.home_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.home_page.default
+targetEntityType: node
+bundle: home_page
+mode: default
+content:
+  field_hero_banner:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  links: true

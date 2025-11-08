@@ -1,0 +1,22 @@
+uuid: cb1202ec-2b85-4b9f-9b4c-48f3af82bda8
+langcode: en
+status: false
+dependencies:
+  theme:
+    - nrbgg
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: nrbgg_primary_local_tasks
+theme: nrbgg
+region: header
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }
