@@ -1,0 +1,20 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ content.field_hero_image }}
+  
+  <div class="hero-content-overlay">
+    {{ content.field_title }}
+    
+    <div class="hero-buttons">
+      {{ content.field_primary_hero_cta }}
+      {{ content.field_secondary_hero_cta }}
+    </div>
+  </div>
+</div>

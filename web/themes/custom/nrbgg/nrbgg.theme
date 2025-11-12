@@ -27,3 +27,13 @@ function nrbgg_preprocess_page(array &$variables): void {
 function nrbgg_preprocess_node(array &$variables): void {
 
 }
+
+function nrbgg_preprocess_field(array &$variables) {
+  $element = $variables['element'];
+  $variables['attributes']['class'][] = 'field';
+  $variables['attributes']['class'][] = 'field--name-' . \Drupal\Component\Utility\Html::getClass($element['#field_name']);
+  $variables['attributes']['class'][] = 'field--type-' . \Drupal\Component\Utility\Html::getClass($element['#field_type']);
+  if (!empty($element['#label_display'])) {
+    $variables['attributes']['class'][] = 'field--label-' . \Drupal\Component\Utility\Html::getClass($element['#label_display']);
+  }
+}
