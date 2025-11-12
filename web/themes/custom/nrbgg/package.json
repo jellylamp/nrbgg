@@ -2,9 +2,14 @@
   "name": "nrbgg",
   "private": true,
   "scripts": {
-    "livereload": "livereload --exclusions node_modules/ --exts 'css,js,twig,theme,apng,avif,gif,jpg,jpeg,jfif,pjpeg,pjp,png,svg,webp'"
+    "livereload": "livereload --exclusions node_modules/ --exts 'css,js,twig,theme,apng,avif,gif,jpg,jpeg,jfif,pjpeg,pjp,png,svg,webp'",
+    "dev": "vite",
+    "build": "vite build",
+    "watch": "vite build --watch"
   },
   "devDependencies": {
-    "livereload": "^0.9.3"
+    "livereload": "^0.9.3",
+    "sass": "^1.93.3",
+    "vite": "^7.2.2"
   }
 }

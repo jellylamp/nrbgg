@@ -1,0 +1,118 @@
+// ================================
+// COLORS
+// ================================
+
+// Brand Colors
+$color-primary: #f59e0b;        // Amber/Orange
+$color-secondary: #ec4899;      // Pink
+$color-accent: #fbbf24;         // Light amber
+
+// Neutrals
+$color-dark-navy: #1a202c;
+$color-charcoal: #2d3748;
+$color-slate: #4a5568;
+$color-light-gray: #e2e8f0;
+$color-off-white: #edf2f7;
+$color-white: #ffffff;
+
+// Background
+$bg-primary: $color-dark-navy;
+$bg-secondary: $color-charcoal;
+$bg-tertiary: $color-slate;
+
+// Text Colors
+$text-primary: $color-light-gray;
+$text-secondary: $color-off-white;
+$text-hover: $color-accent;
+$text-white: $color-white;
+
+// UI States
+$color-hover-bg: rgba($color-primary, 0.1);
+$color-active: $color-accent;
+$color-border: rgba($color-primary, 0.2);
+
+// ================================
+// SPACING
+// ================================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 20px;
+$spacing-2xl: 32px;
+
+// ================================
+// TYPOGRAPHY
+// ================================
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+$font-size-sm: 12px;
+$font-size-base: 15px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+
+// ================================
+// BORDERS & RADIUS
+// ================================
+$border-radius-sm: 2px;
+$border-radius-base: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+
+$border-width-sm: 1px;
+$border-width-md: 2px;
+$border-width-lg: 3px;
+
+// ================================
+// SHADOWS
+// ================================
+$shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+// ================================
+// Z-INDEX
+// ================================
+$z-nav: 200;
+$z-dropdown: 2000;
+$z-modal: 3000;
+$z-tooltip: 4000;
+
+// ================================
+// TRANSITIONS
+// ================================
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.4s ease;
+
+// ================================
+// BREAKPOINTS
+// ================================
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1280px;
+
+// ================================
+// GRADIENTS
+// ================================
+$gradient-primary: linear-gradient(135deg, $color-dark-navy 0%, $color-charcoal 100%);
+$gradient-secondary: linear-gradient(180deg, $color-charcoal 0%, $color-dark-navy 100%);
+$gradient-accent: linear-gradient(90deg, $color-primary 0%, $color-secondary 100%);
+
+// ================================
+// NAVIGATION SPECIFIC
+// ================================
+$nav-padding-y: $spacing-lg;
+$nav-padding-x: $spacing-2xl;
+$nav-gap: $spacing-sm;
+$nav-link-padding-y: $spacing-md;
+$nav-link-padding-x: $spacing-xl;
+
+$dropdown-min-width: 200px;
+$dropdown-padding-y: $spacing-sm;
+$dropdown-item-padding-y: $spacing-md;
+$dropdown-item-padding-x: $spacing-xl;

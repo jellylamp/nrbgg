@@ -28,3 +28,9 @@ services:
       - '@logger.channel.config_schema'
     tags:
       - { name: event_subscriber }
+  twig.config:
+    debug: true
+    auto_reload: true
+    cache: false
+    synthetic: true
+

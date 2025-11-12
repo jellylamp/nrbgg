@@ -1,0 +1,26 @@
+/* Target the hero banner paragraph */
+.paragraph--type--hero-banner {
+  width: 100vw; /* full viewport width */
+  margin-left: calc(-50vw + 50%); /* override container centering */
+  margin-right: calc(-50vw + 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Make the image fill the container */
+.paragraph--type--hero-banner img {
+  width: 100%;
+  height: auto; /* maintain aspect ratio */
+  display: block;
+}
+
+/* Optional: add overlay text on top of the image */
+.paragraph--type--hero-banner .hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 2;
+}

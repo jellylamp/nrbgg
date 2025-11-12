@@ -1,0 +1,123 @@
+@use 'variables' as *;
+
+// ================================
+// MIXINS
+// ================================
+
+// Animated Underline
+@mixin animated-underline($height: 3px, $color: $gradient-accent, $offset: 8px) {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: $offset;
+      left: $nav-link-padding-x;
+      right: $nav-link-padding-x;
+      height: $height;
+      background: $color;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition-base;
+      border-radius: $border-radius-sm;
+    }
+    
+    &:hover::before {
+      transform: scaleX(1);
+    }
+  }
+  
+  // Smooth Fade In
+  @mixin fade-in-animation {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity $transition-base, transform $transition-base;
+    
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Card/Panel Style
+  @mixin card-style($padding: $spacing-lg) {
+    background: $gradient-secondary;
+    border-radius: $border-radius-md;
+    padding: $padding;
+    box-shadow: $shadow-md;
+    border: $border-width-sm solid $color-border;
+  }
+  
+  // Reset List Styles
+  @mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  // Hover Lift Effect
+  @mixin hover-lift($translate: -2px) {
+    transition: transform $transition-fast, box-shadow $transition-fast;
+    
+    &:hover {
+      transform: translateY($translate);
+      box-shadow: $shadow-lg;
+    }
+  }
+  
+  // Truncate Text
+  @mixin truncate($width: 100%) {
+    width: $width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  // Visually Hidden (Accessible)
+  @mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+  
+  // Responsive Breakpoint
+  @mixin mobile {
+    @media (max-width: $breakpoint-mobile) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (max-width: $breakpoint-tablet) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: $breakpoint-desktop) {
+      @content;
+    }
+  }
+  
+  // Flexbox Center
+  @mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  // Full Width Container
+  @mixin full-width-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }

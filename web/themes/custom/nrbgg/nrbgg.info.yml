@@ -1,6 +1,6 @@
 name: nrbgg
 type: theme
-base theme: olivero
+base theme: stark
 description: A flexible theme with a responsive, mobile-first layout.
 package: Custom
 core_version_requirement: ^10 || ^11
