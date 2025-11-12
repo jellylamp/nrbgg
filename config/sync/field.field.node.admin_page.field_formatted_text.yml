@@ -1,0 +1,24 @@
+uuid: 91101401-6e4f-493d-bcf0-82f071b68a36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_formatted_text
+    - filter.format.ck_editor
+    - node.type.admin_page
+  module:
+    - text
+id: node.admin_page.field_formatted_text
+field_name: field_formatted_text
+entity_type: node
+bundle: admin_page
+label: 'Formatted Text'
+description: 'Use this field to add a ms word-like experience into the site, add headers, images, whatever. Its flexible.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - ck_editor
+field_type: text_long

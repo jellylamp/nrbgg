@@ -1,0 +1,55 @@
+uuid: 4bc82198-8ea4-4472-9480-6d00a30c73d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.admin_page.field_download_pdf_link
+    - field.field.node.admin_page.field_formatted_text
+    - field.field.node.admin_page.field_last_updated_date
+    - node.type.admin_page
+  module:
+    - text
+    - user
+id: node.admin_page.default
+targetEntityType: node
+bundle: admin_page
+mode: default
+content:
+  field_download_pdf_link:
+    type: entity_reference_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_formatted_text:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_last_updated_date:
+    type: timestamp
+    label: visually_hidden
+    settings:
+      date_format: html_date
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: html_date
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+        description: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  links: true

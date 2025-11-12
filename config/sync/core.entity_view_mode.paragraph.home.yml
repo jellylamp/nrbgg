@@ -1,0 +1,11 @@
+uuid: 52793efe-4f16-4754-981c-124dde609d43
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.home
+label: Home
+description: 'A paragraph specific to the home page'
+targetEntityType: paragraph
+cache: true

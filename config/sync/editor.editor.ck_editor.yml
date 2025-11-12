@@ -1,0 +1,59 @@
+uuid: 36b2c527-2e21-4981-96e0-dd5ea59d4dbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.ck_editor
+  module:
+    - ckeditor5
+format: ck_editor
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - bold
+      - underline
+      - italic
+      - strikethrough
+      - link
+      - bulletedList
+      - numberedList
+      - horizontalLine
+      - alignment
+      - indent
+      - drupalMedia
+      - outdent
+      - style
+      - sourceEditing
+      - code
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+      multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Grey Background'
+          element: '<p class="grey">'
+    media_media:
+      allow_view_mode_override: false
+image_upload:
+  status: false

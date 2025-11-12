@@ -1,0 +1,18 @@
+uuid: a77b8c62-e550-4a46-9bdc-7306d4ec8cb6
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Admin Page'
+type: admin_page
+description: 'An admin page should be used for important information from the and approved by the admins. It should be restricted to admin users to create and edit. Use this for welcome posts, code of conduct, or any other information that may be important.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,19 @@
+uuid: 7d1f773b-6415-4958-a421-74bcfb12047e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_updated_date
+    - node.type.admin_page
+id: node.admin_page.field_last_updated_date
+field_name: field_last_updated_date
+entity_type: node
+bundle: admin_page
+label: 'Last Updated Date'
+description: 'Use this date if we need to track important files, like changes to the code of conduct. By using a manual field it allows us to set this to past dates or lets us not update this date for a minor typo.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
