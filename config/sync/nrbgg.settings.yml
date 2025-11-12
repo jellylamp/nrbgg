@@ -5,4 +5,10 @@ features:
   favicon: 1
 mobile_menu_all_widths: 0
 site_branding_bg_color: default
-base_primary_color: '#57919e'
+base_primary_color: '#7a4587'
+logo:
+  use_default: 1
+favicon:
+  use_default: 0
+  path: 'public://screenshotted_logo_0.png'
+  mimetype: image/png

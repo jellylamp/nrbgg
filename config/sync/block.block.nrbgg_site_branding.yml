@@ -1,6 +1,6 @@
 uuid: e60d3a7d-b142-41ed-8fac-7a6d77d3d9af
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -11,7 +11,7 @@ _core:
 id: nrbgg_site_branding
 theme: nrbgg
 region: header
-weight: 0
+weight: -2
 provider: null
 plugin: system_branding_block
 settings:

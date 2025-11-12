@@ -2,14 +2,16 @@ uuid: 3443da7a-8117-454a-95e1-ff78312fa636
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - nrbgg
 _core:
   default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
 id: nrbgg_page_title
 theme: nrbgg
-region: header
-weight: -5
+region: content
+weight: -4
 provider: null
 plugin: page_title_block
 settings:
@@ -17,4 +19,8 @@ settings:
   label: 'Page title'
   label_display: '0'
   provider: core
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

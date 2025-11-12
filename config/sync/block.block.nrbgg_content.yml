@@ -11,7 +11,7 @@ _core:
 id: nrbgg_content
 theme: nrbgg
 region: content
-weight: 0
+weight: -3
 provider: null
 plugin: system_main_block
 settings:
