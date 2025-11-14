@@ -51,8 +51,11 @@ settings:
     ckeditor5_style:
       styles:
         -
-          label: 'Grey Background'
-          element: '<p class="grey">'
+          label: 'P Alternating Background'
+          element: '<p class="alternating-grey">'
+        -
+          label: 'DIV Alternating background'
+          element: '<div class="alternating-grey">'
     media_media:
       allow_view_mode_override: false
 image_upload:

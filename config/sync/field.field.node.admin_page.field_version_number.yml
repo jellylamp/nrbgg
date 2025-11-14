@@ -1,0 +1,19 @@
+uuid: 6c749a38-21bf-4108-b065-398d11324115
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_version_number
+    - node.type.admin_page
+id: node.admin_page.field_version_number
+field_name: field_version_number
+entity_type: node
+bundle: admin_page
+label: 'Version Number'
+description: 'The version number of the file, in case we have it versioned.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

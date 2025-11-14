@@ -6,8 +6,10 @@ dependencies:
     - field.field.node.admin_page.field_download_pdf_link
     - field.field.node.admin_page.field_formatted_text
     - field.field.node.admin_page.field_last_updated_date
+    - field.field.node.admin_page.field_version_number
     - node.type.admin_page
   module:
+    - datetime
     - media_library
     - path
     - text
@@ -38,10 +40,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_last_updated_date:
-    type: datetime_timestamp
-    weight: 9
+    type: datetime_default
+    weight: 27
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_version_number:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path

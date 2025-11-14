@@ -6,8 +6,10 @@ dependencies:
     - field.field.node.admin_page.field_download_pdf_link
     - field.field.node.admin_page.field_formatted_text
     - field.field.node.admin_page.field_last_updated_date
+    - field.field.node.admin_page.field_version_number
     - node.type.admin_page
   module:
+    - datetime
     - text
     - user
 id: node.admin_page.default
@@ -32,24 +34,21 @@ content:
     weight: 1
     region: content
   field_last_updated_date:
-    type: timestamp
+    type: datetime_default
     label: visually_hidden
     settings:
-      date_format: html_date
-      custom_date_format: ''
-      timezone: ''
-      tooltip:
-        date_format: html_date
-        custom_date_format: ''
-      time_diff:
-        enabled: false
-        future_format: '@interval hence'
-        past_format: '@interval ago'
-        granularity: 2
-        refresh: 60
-        description: ''
+      timezone_override: ''
+      format_type: html_date
     third_party_settings: {  }
-    weight: 0
+    weight: 4
+    region: content
+  field_version_number:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   links: true

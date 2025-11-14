@@ -1,0 +1,30 @@
+{%
+  set classes = [
+    'node',
+    'node--type--' ~ node.bundle|clean_class,
+    view_mode ? 'node--view-mode--' ~ view_mode|clean_class,
+    not node.isPublished() ? 'node--unpublished',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <div class="text-wrapper">
+    <div class="info-box">
+      {% if content.field_version_number|render|striptags|trim %}
+        <span class="version">
+          Version: {{ content.field_version_number.0['#context'].value }}
+        </span>
+      {% endif %}
+      {% if content.field_last_updated_date|render|striptags|trim %}
+        <span class="last-updated">
+          Last updated on: {{ content.field_last_updated_date.0['#text'] }}
+        </span>
+      {% endif %}
+      {% if content.field_download_pdf_link|render|striptags|trim %}
+        {{ content.field_download_pdf_link }}
+      {% endif %}
+    </div>
+    {% if content.field_formatted_text|render|striptags|trim %}
+      {{ content.field_formatted_text }}
+    {% endif %}
+  </div>
+</div>

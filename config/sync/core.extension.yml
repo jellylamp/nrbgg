@@ -3,6 +3,7 @@ _core:
 module:
   block: 0
   ckeditor5: 0
+  datetime: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
