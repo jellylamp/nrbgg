@@ -1,0 +1,14 @@
+uuid: baaf8c85-e282-40d1-b4c2-22a8ce49d318
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.nrbgg_admin
+  module:
+    - user
+id: user_remove_role_action.nrbgg_admin
+label: 'Remove the NRBGG Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: nrbgg_admin

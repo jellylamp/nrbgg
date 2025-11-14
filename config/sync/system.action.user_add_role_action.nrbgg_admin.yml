@@ -1,0 +1,14 @@
+uuid: 4a56838c-aef9-4791-bc7e-a39c47ae89e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.nrbgg_admin
+  module:
+    - user
+id: user_add_role_action.nrbgg_admin
+label: 'Add the NRBGG Admin role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: nrbgg_admin

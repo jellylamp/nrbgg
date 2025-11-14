@@ -1,0 +1,124 @@
+uuid: 55e4c230-764a-4299-9f10-6357fc4ac647
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.ck_editor
+    - media.type.file
+    - media.type.image
+    - media.type.remote_video
+    - media.type.uploaded_video
+    - node.type.admin_page
+    - node.type.home_page
+  module:
+    - block
+    - entity_reference_revisions
+    - field_ui
+    - file
+    - filter
+    - image
+    - media
+    - node
+    - paragraphs
+    - path
+    - system
+id: nrbgg_admin
+label: 'NRBGG Admin'
+weight: 2
+is_admin: true
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access files overview'
+  - 'access site in maintenance mode'
+  - 'access site reports'
+  - 'access user profiles'
+  - 'administer account settings'
+  - 'administer actions'
+  - 'administer blocks'
+  - 'administer content types'
+  - 'administer display modes'
+  - 'administer filters'
+  - 'administer image styles'
+  - 'administer media'
+  - 'administer media display'
+  - 'administer media fields'
+  - 'administer media form display'
+  - 'administer media types'
+  - 'administer menu'
+  - 'administer modules'
+  - 'administer node display'
+  - 'administer node fields'
+  - 'administer node form display'
+  - 'administer nodes'
+  - 'administer paragraph display'
+  - 'administer paragraph fields'
+  - 'administer paragraph form display'
+  - 'administer paragraphs settings'
+  - 'administer paragraphs types'
+  - 'administer permissions'
+  - 'administer site configuration'
+  - 'administer software updates'
+  - 'administer themes'
+  - 'administer url aliases'
+  - 'administer user display'
+  - 'administer user fields'
+  - 'administer user form display'
+  - 'administer users'
+  - 'bypass node access'
+  - 'cancel account'
+  - 'change own username'
+  - 'create admin_page content'
+  - 'create file media'
+  - 'create home_page content'
+  - 'create url aliases'
+  - 'delete admin_page revisions'
+  - 'delete all revisions'
+  - 'delete any admin_page content'
+  - 'delete any file'
+  - 'delete any file media'
+  - 'delete any file media revisions'
+  - 'delete any home_page content'
+  - 'delete any image media'
+  - 'delete any image media revisions'
+  - 'delete any media'
+  - 'delete any remote_video media'
+  - 'delete any remote_video media revisions'
+  - 'delete any uploaded_video media'
+  - 'delete any uploaded_video media revisions'
+  - 'delete home_page revisions'
+  - 'delete orphan revisions'
+  - 'delete own admin_page content'
+  - 'delete own files'
+  - 'delete own home_page content'
+  - 'edit any admin_page content'
+  - 'edit any file media'
+  - 'edit any home_page content'
+  - 'edit any image media'
+  - 'edit any remote_video media'
+  - 'edit any uploaded_video media'
+  - 'edit behavior plugin settings'
+  - 'edit own admin_page content'
+  - 'edit own home_page content'
+  - 'link to any page'
+  - 'revert admin_page revisions'
+  - 'revert all revisions'
+  - 'revert any file media revisions'
+  - 'revert any image media revisions'
+  - 'revert any remote_video media revisions'
+  - 'revert any uploaded_video media revisions'
+  - 'revert home_page revisions'
+  - 'select account cancellation method'
+  - 'update any media'
+  - 'use text format ck_editor'
+  - 'view admin_page revisions'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view any file media revisions'
+  - 'view any image media revisions'
+  - 'view any remote_video media revisions'
+  - 'view any uploaded_video media revisions'
+  - 'view home_page revisions'
+  - 'view the administration theme'
+  - 'view unpublished paragraphs'
+  - 'view user email addresses'

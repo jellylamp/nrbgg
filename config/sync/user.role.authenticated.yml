@@ -2,8 +2,15 @@ uuid: 8fdfdd50-bd2a-4e23-9662-8bccf34f04b1
 langcode: en
 status: true
 dependencies:
+  config:
+    - media.type.file
+    - media.type.image
+    - media.type.remote_video
+    - media.type.uploaded_video
   module:
+    - file
     - media
+    - node
     - system
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
@@ -13,4 +20,25 @@ weight: 1
 is_admin: false
 permissions:
   - 'access content'
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'create file media'
+  - 'create image media'
+  - 'create media'
+  - 'create remote_video media'
+  - 'create uploaded_video media'
+  - 'delete media'
+  - 'delete own file media'
+  - 'delete own files'
+  - 'delete own image media'
+  - 'delete own remote_video media'
+  - 'delete own uploaded_video media'
+  - 'edit own file media'
+  - 'edit own image media'
+  - 'edit own remote_video media'
+  - 'edit own uploaded_video media'
+  - 'update media'
   - 'view media'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
