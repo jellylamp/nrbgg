@@ -1,0 +1,31 @@
+uuid: d4fef151-994d-4fdc-9bd6-b71fbbaac8c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_banner
+    - node.type.event
+    - paragraphs.paragraphs_type.hero_banner
+  module:
+    - entity_reference_revisions
+id: node.event.field_event_banner
+field_name: field_event_banner
+entity_type: node
+bundle: event
+label: 'Event Banner'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hero_banner: hero_banner
+    negate: 0
+    target_bundles_drag_drop:
+      hero_banner:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

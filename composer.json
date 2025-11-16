@@ -22,6 +22,7 @@
         "drupal/core-recommended": "^11.2",
         "drupal/gin": "^5.0",
         "drupal/paragraphs": "^1.19",
+        "drupal/smart_date": "^4.2",
         "drupal/tara": "^11.0",
         "drush/drush": "^13.6"
     },

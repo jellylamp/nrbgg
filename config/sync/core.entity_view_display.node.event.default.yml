@@ -1,0 +1,96 @@
+uuid: 12419d0a-bfd6-41f7-990e-25dcff8dc85b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.field_event_banner
+    - field.field.node.event.field_event_capacity
+    - field.field.node.event.field_event_date
+    - field.field.node.event.field_event_details
+    - field.field.node.event.field_event_title
+    - field.field.node.event.field_location_address
+    - node.type.event
+  module:
+    - entity_reference_revisions
+    - field_layout
+    - layout_discovery
+    - smart_date
+    - text
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  field_event_banner:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_event_capacity:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_event_date:
+    type: smartdate_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: default
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+      localize: false
+      parts:
+        - start
+        - end
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_event_details:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_event_title:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_location_address:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

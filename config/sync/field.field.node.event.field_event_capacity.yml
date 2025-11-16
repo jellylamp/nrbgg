@@ -1,0 +1,23 @@
+uuid: 047a9c4a-33d5-41ee-88b2-be7e5cedcfcd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_capacity
+    - node.type.event
+id: node.event.field_event_capacity
+field_name: field_event_capacity
+entity_type: node
+bundle: event
+label: 'Event Capacity'
+description: 'Maximum number of attendees (leave blank for unlimited)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

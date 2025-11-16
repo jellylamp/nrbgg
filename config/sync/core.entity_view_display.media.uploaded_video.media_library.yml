@@ -8,7 +8,14 @@ dependencies:
     - image.style.medium
     - media.type.uploaded_video
   module:
+    - field_layout
     - image
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: media.uploaded_video.media_library
 targetEntityType: media
 bundle: uploaded_video

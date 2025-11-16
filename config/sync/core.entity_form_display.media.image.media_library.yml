@@ -8,7 +8,15 @@ dependencies:
     - image.style.thumbnail
     - media.type.image
   module:
+    - field_layout
     - image
+    - layout_discovery
+    - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: media.image.media_library
 targetEntityType: media
 bundle: image
@@ -21,6 +29,12 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

@@ -1,0 +1,24 @@
+uuid: 20ec5b1e-df3e-4f71-8c6e-378505e400bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_details
+    - filter.format.ck_editor
+    - node.type.event
+  module:
+    - text
+id: node.event.field_event_details
+field_name: field_event_details
+entity_type: node
+bundle: event
+label: 'Event Details'
+description: 'Tell us about your event'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - ck_editor
+field_type: text_long
