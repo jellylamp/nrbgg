@@ -1,49 +1,69 @@
-(function ($, Drupal) {
+(function (Drupal) {
   'use strict';
 
   Drupal.behaviors.eventRsvp = {
     attach: function (context, settings) {
-      $('.event-rsvp-button', context).once('event-rsvp').on('click', function (e) {
-        e.preventDefault();
+      const buttons = context.querySelectorAll('.event-rsvp-button:not(.event-rsvp-processed)');
+      
+      buttons.forEach(function(button) {
+        button.classList.add('event-rsvp-processed');
         
-        var $button = $(this);
-        var url = $button.attr('href');
-        var status = $button.data('status');
-        
-        // Disable all buttons during request.
-        $('.event-rsvp-button').prop('disabled', true);
-        
-        // Make AJAX request.
-        $.ajax({
-          url: url,
-          type: 'GET',
-          dataType: 'json',
-          success: function (response) {
-            if (response.success) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const url = this.getAttribute('href');
+          const status = this.getAttribute('data-status');
+          
+          // Disable all buttons during request.
+          document.querySelectorAll('.event-rsvp-button').forEach(function(btn) {
+            btn.disabled = true;
+          });
+          
+          // Make fetch request.
+          fetch(url, {
+            method: 'GET',
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            if (data.success) {
               // Update button states.
-              $('.event-rsvp-button').removeClass('active');
-              $button.addClass('active');
+              document.querySelectorAll('.event-rsvp-button').forEach(function(btn) {
+                btn.classList.remove('active');
+              });
+              button.classList.add('active');
               
               // Update counts.
-              if (response.counts) {
-                $('.count-going').text('(' + response.counts.going + ')');
-                $('.count-maybe').text('(' + response.counts.maybe + ')');
-                $('.count-not-going').text('(' + response.counts.not_going + ')');
+              if (data.counts) {
+                const goingCount = document.querySelector('.count-going');
+                const maybeCount = document.querySelector('.count-maybe');
+                const notGoingCount = document.querySelector('.count-not-going');
+                
+                if (goingCount) goingCount.textContent = '(' + data.counts.going + ')';
+                if (maybeCount) maybeCount.textContent = '(' + data.counts.maybe + ')';
+                if (notGoingCount) notGoingCount.textContent = '(' + data.counts.not_going + ')';
               }
               
               // Reload the page to update the user lists.
               location.reload();
             }
-          },
-          error: function () {
+          })
+          .catch(function(error) {
             alert('Error updating RSVP. Please try again.');
-          },
-          complete: function () {
-            $('.event-rsvp-button').prop('disabled', false);
-          }
+            console.error('RSVP Error:', error);
+          })
+          .finally(function() {
+            document.querySelectorAll('.event-rsvp-button').forEach(function(btn) {
+              btn.disabled = false;
+            });
+          });
         });
       });
     }
   };
 
-})(jQuery, Drupal);
+})(Drupal);
