@@ -1,123 +1,109 @@
-// ================================
-// IMPORTS
-// ================================
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
 
-// ================================
-// HERO BANNER COMPONENT
-// ================================
 
-/* Target the hero banner paragraph */
 .paragraph--type--hero-banner {
-  width: 100vw; /* full viewport width */
+  width: 100vw;
   height: 450px;
-  margin-left: calc(-50vw + 50%); /* override container centering */
+  margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
   position: relative;
   overflow: hidden;
+
+  img {
+    object-fit: cover;
+    display: block;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(26, 32, 44, 0.7) 0%,
+      rgba(45, 55, 72, 0.5) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-content-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $color-white;
+    text-align: center;
+    z-index: 2;
+    width: 90%;
+    max-width: 900px;
+  }
+
+  .field--name-field-title {
+    margin-bottom: 32px;
+
+    & > div {
+      font-size: 56px;
+      font-weight: 700;
+      color: $color-white;
+      line-height: 1.2;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      margin: 0;
+    }
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .field--name-field-primary-hero-cta div a {
+    display: inline-block;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-white;
+    background: linear-gradient(90deg, $color-primary 0%, $color-secondary 100%);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px $color-primary;
+    }
+  }
+
+  .field--name-field-secondary-hero-cta div a {
+    display: inline-block;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-white;
+    background-color: transparent;
+    border: 2px solid $color-white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      background-color: $color-white;
+      color: $color-dark-navy;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px $color-slate;
+    }
+  }
 }
 
-/* Make the image fill the container */ 
-.paragraph--type--hero-banner img {
-  object-fit: cover;
-  display: block;
-}
-
-/* Dark overlay for better text readability */
-.paragraph--type--hero-banner::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(26, 32, 44, 0.7) 0%,
-    rgba(45, 55, 72, 0.5) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Content overlay wrapper */
-.paragraph--type--hero-banner .hero-content-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  z-index: 2;
-  width: 90%;
-  max-width: 900px;
-}
-
-/* Style the title */
-.paragraph--type--hero-banner .field--name-field-title {
-  margin-bottom: 32px;
-}
-
-.paragraph--type--hero-banner .field--name-field-title > div {
-  font-size: 56px;
-  font-weight: 700;
-  color: white;
-  line-height: 1.2;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-  margin: 0;
-}
-
-/* Buttons container */
-.paragraph--type--hero-banner .hero-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* Primary button */
-.paragraph--type--hero-banner .field--name-field-primary-hero-cta div a {
-  display: inline-block;
-  padding: 16px 32px;
-  font-size: 16px;
-  font-weight: 700;
-  color: white;
-  background: linear-gradient(90deg, #f59e0b 0%, #ec4899 100%);
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
-}
-
-.paragraph--type--hero-banner .field--name-field-primary-hero-cta div a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5);
-}
-
-/* Secondary button */
-.paragraph--type--hero-banner .field--name-field-secondary-hero-cta div a {
-  display: inline-block;
-  padding: 14px 32px;
-  font-size: 16px;
-  font-weight: 500;
-  color: white;
-  background-color: transparent;
-  border: 2px solid white;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.paragraph--type--hero-banner .field--name-field-secondary-hero-cta div a:hover {
-  background-color: white;
-  color: #1a202c;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-}
-
-/* Mobile responsive */
 @media (max-width: 768px) {
   .paragraph--type--hero-banner .field--name-field-title > div {
     font-size: 32px;
