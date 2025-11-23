@@ -1,0 +1,8 @@
+name: Event RSVP
+type: module
+description: 'Allows users to RSVP to events with Going/Maybe/Not Going options'
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:node
+  - drupal:user
