@@ -1,0 +1,24 @@
+uuid: 8ba77346-727f-4c9d-9ddd-6a2df6cdd94d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_formatted_text
+    - filter.format.ck_editor
+    - node.type.event
+  module:
+    - text
+id: node.event.field_formatted_text
+field_name: field_formatted_text
+entity_type: node
+bundle: event
+label: 'Event Details'
+description: 'Details for your event go here! We will auto add our NRBGG Code of Conduct agreement text to the end.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - ck_editor
+field_type: text_long

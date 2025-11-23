@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Template for RSVP lists.
+ *
+ * Available variables:
+ * - going: Array of users who are going.
+ * - maybe: Array of users who marked maybe.
+ * - not_going: Array of users who are not going.
+ */
+#}
+<div class="event-rsvp-lists">
+  <h2 class="event-rsvp-lists-title">{{ 'Attendees'|t }}</h2>
+  
+  <div class="event-rsvp-list event-rsvp-list-going">
+    <h3>{{ 'Going'|t }} ({{ going|length }})</h3>
+    {% if going|length > 0 %}
+      <ul>
+        {% for user in going %}
+          <li>
+            <a href="{{ user.url }}">{{ user.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="event-rsvp-empty">{{ 'No one yet'|t }}</p>
+    {% endif %}
+  </div>
+
+  <div class="event-rsvp-list event-rsvp-list-maybe">
+    <h3>{{ 'Maybe'|t }} ({{ maybe|length }})</h3>
+    {% if maybe|length > 0 %}
+      <ul>
+        {% for user in maybe %}
+          <li>
+            <a href="{{ user.url }}">{{ user.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="event-rsvp-empty">{{ 'No one yet'|t }}</p>
+    {% endif %}
+  </div>
+
+  <div class="event-rsvp-list event-rsvp-list-not-going">
+    <h3>{{ 'Not Going'|t }} ({{ not_going|length }})</h3>
+    {% if not_going|length > 0 %}
+      <ul>
+        {% for user in not_going %}
+          <li>
+            <a href="{{ user.url }}">{{ user.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="event-rsvp-empty">{{ 'No one yet'|t }}</p>
+    {% endif %}
+  </div>
+</div>

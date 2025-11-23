@@ -1,0 +1,13 @@
+event_rsvp.set_status:
+  path: '/event/{node}/rsvp/{status}'
+  defaults:
+    _controller: '\Drupal\event_rsvp\Controller\EventRsvpController::setStatus'
+    _title: 'Set RSVP Status'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    status: 'going|maybe|not_going'
+    node: \d+
+  options:
+    parameters:
+      node:
+        type: entity:node

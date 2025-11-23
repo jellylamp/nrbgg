@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Event RSVP module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function event_rsvp_schema() {
+  $schema['event_rsvp'] = [
+    'description' => 'Stores RSVP responses for events',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique RSVP ID.',
+      ],
+      'nid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The node ID of the event.',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The user ID who is RSVPing.',
+      ],
+      'status' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'description' => 'RSVP status: going, maybe, or not_going.',
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp when RSVP was created.',
+      ],
+      'changed' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp when RSVP was last changed.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'nid_uid' => ['nid', 'uid'],
+    ],
+    'indexes' => [
+      'nid' => ['nid'],
+      'uid' => ['uid'],
+      'status' => ['status'],
+    ],
+  ];
+
+  return $schema;
+}

@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * Main module file for Event RSVP.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function event_rsvp_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  // Only add RSVP to event content type nodes in full view mode.
+  if ($entity->bundle() === 'event' && $view_mode === 'full') {
+    $rsvp_service = \Drupal::service('event_rsvp.service');
+    $current_user = \Drupal::currentUser();
+    
+    $nid = $entity->id();
+    $uid = $current_user->id();
+    $current_status = $rsvp_service->getRsvp($nid, $uid);
+    $counts = $rsvp_service->getCounts($nid);
+    $lists = $rsvp_service->getLists($nid);
+
+    $build['event_rsvp'] = [
+      '#type' => 'container',
+      '#weight' => 100,
+      '#attributes' => ['class' => ['event-rsvp-wrapper']],
+      '#cache' => [
+        'contexts' => ['user'],
+        'tags' => ['event_rsvp:' . $entity->id()],
+      ],
+    ];
+
+    // RSVP Buttons (only for logged-in users).
+    if ($current_user->isAuthenticated()) {
+      $build['event_rsvp']['buttons'] = [
+        '#theme' => 'event_rsvp_buttons',
+        '#nid' => $nid,
+        '#current_status' => $current_status,
+        '#counts' => $counts,
+        '#attached' => [
+          'library' => ['event_rsvp/rsvp'],
+        ],
+      ];
+    }
+    else {
+      $build['event_rsvp']['login_message'] = [
+        '#markup' => '<p>' . t('Please <a href="@login">log in</a> to RSVP for this event.', [
+          '@login' => \Drupal\Core\Url::fromRoute('user.login')->toString(),
+        ]) . '</p>',
+      ];
+    }
+
+    // RSVP Lists.
+    $build['event_rsvp']['lists'] = [
+      '#theme' => 'event_rsvp_list',
+      '#going' => $lists['going'],
+      '#maybe' => $lists['maybe'],
+      '#not_going' => $lists['not_going'],
+    ];
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function event_rsvp_theme($existing, $type, $theme, $path) {
+  return [
+    'event_rsvp_buttons' => [
+      'variables' => [
+        'nid' => NULL,
+        'current_status' => NULL,
+        'counts' => [],
+      ],
+    ],
+    'event_rsvp_list' => [
+      'variables' => [
+        'going' => [],
+        'maybe' => [],
+        'not_going' => [],
+      ],
+    ],
+  ];
+}

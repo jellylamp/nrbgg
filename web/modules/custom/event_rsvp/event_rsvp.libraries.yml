@@ -1,0 +1,10 @@
+rsvp:
+  version: 1.0
+  js:
+    js/event-rsvp.js: {}
+  css:
+    theme:
+      css/event-rsvp.css: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
