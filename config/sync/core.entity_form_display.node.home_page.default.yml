@@ -6,15 +6,7 @@ dependencies:
     - field.field.node.home_page.field_hero_banner
     - node.type.home_page
   module:
-    - field_layout
-    - layout_discovery
     - paragraphs
-    - path
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings:
-      label: ''
 id: node.home_page.default
 targetEntityType: node
 bundle: home_page
@@ -37,12 +29,6 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 30
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox

@@ -6,15 +6,7 @@ dependencies:
     - field.field.media.uploaded_video.field_media_video_file
     - media.type.uploaded_video
   module:
-    - field_layout
     - file
-    - layout_discovery
-    - path
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings:
-      label: ''
 id: media.uploaded_video.default
 targetEntityType: media
 bundle: uploaded_video
@@ -40,12 +32,6 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 30
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox

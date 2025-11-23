@@ -9,14 +9,7 @@ dependencies:
     - field.field.paragraph.hero_banner.field_title
     - paragraphs.paragraphs_type.hero_banner
   module:
-    - field_layout
-    - layout_discovery
     - link
-third_party_settings:
-  field_layout:
-    id: layout_onecol
-    settings:
-      label: ''
 id: paragraph.hero_banner.default
 targetEntityType: paragraph
 bundle: hero_banner
