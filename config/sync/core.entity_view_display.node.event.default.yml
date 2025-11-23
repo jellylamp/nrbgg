@@ -1,0 +1,68 @@
+uuid: a61aa158-8223-439f-abbf-9f0dd681a5a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.field_event_address
+    - field.field.node.event.field_event_date_and_time
+    - field.field.node.event.field_formatted_text
+    - field.field.node.event.field_hero_banner
+    - node.type.event
+  module:
+    - address
+    - entity_reference_revisions
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  field_event_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_event_date_and_time:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_formatted_text:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_hero_banner:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
