@@ -1,0 +1,23 @@
+uuid: 4d381408-44ba-46f7-a326-31d0acfa1bdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_max_event_cap
+    - node.type.event
+id: node.event.field_max_event_cap
+field_name: field_max_event_cap
+entity_type: node
+bundle: event
+label: 'Max Event Cap'
+description: 'If you have limited table space in your event space, add a limit here that will be enforceable with the RSVPs.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

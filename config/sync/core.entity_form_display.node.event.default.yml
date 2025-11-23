@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.event.field_event_date_and_time
     - field.field.node.event.field_formatted_text
     - field.field.node.event.field_hero_banner
+    - field.field.node.event.field_max_event_cap
     - node.type.event
   module:
     - address
@@ -62,6 +63,13 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_max_event_cap:
+    type: number
+    weight: 123
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path

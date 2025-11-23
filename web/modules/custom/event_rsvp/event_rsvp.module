@@ -33,6 +33,21 @@ function event_rsvp_node_view(array &$build, EntityInterface $entity, EntityView
         'tags' => ['event_rsvp:' . $entity->id()],
       ],
     ];
+    
+    // Show capacity info if set.
+    if ($entity->hasField('field_max_event_cap') && !empty($entity->get('field_max_event_cap')->value)) {
+      $capacity = $entity->get('field_max_event_cap')->value;
+      $spots_left = max(0, $capacity - $counts['going']);
+      $capacity_class = $spots_left == 0 ? 'capacity-full' : ($spots_left <= 3 ? 'capacity-low' : 'capacity-available');
+      
+      $build['event_rsvp']['capacity'] = [
+        '#markup' => '<div class="event-capacity-info ' . $capacity_class . '">
+          <strong>' . t('Capacity:') . '</strong> ' . 
+          $counts['going'] . ' / ' . $capacity . 
+          ' <span class="spots-remaining">(' . $spots_left . ' ' . t('spots remaining') . ')</span>
+        </div>',
+      ];
+    }
 
     // RSVP Buttons (only for logged-in users).
     if ($current_user->isAuthenticated()) {

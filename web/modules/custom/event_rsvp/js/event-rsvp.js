@@ -50,13 +50,19 @@
               
               // Reload the page to update the user lists.
               location.reload();
+            } else if (data.error) {
+              // Show capacity error message.
+              alert(data.error);
+              // Re-enable buttons.
+              document.querySelectorAll('.event-rsvp-button').forEach(function(btn) {
+                btn.disabled = false;
+              });
             }
           })
           .catch(function(error) {
             alert('Error updating RSVP. Please try again.');
             console.error('RSVP Error:', error);
-          })
-          .finally(function() {
+            // Re-enable buttons.
             document.querySelectorAll('.event-rsvp-button').forEach(function(btn) {
               btn.disabled = false;
             });

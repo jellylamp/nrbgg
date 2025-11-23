@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_hero_image
-    - media.type.image
+    - media.type.wide_image
     - paragraphs.paragraphs_type.hero_banner
 id: paragraph.hero_banner.field_hero_image
 field_name: field_hero_image
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      wide_image: wide_image
     sort:
       field: _none
       direction: ASC

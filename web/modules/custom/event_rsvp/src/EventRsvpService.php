@@ -36,11 +36,19 @@ class EventRsvpService {
    * @param string $status
    *   The RSVP status (going, maybe, not_going).
    *
-   * @return bool
-   *   TRUE on success.
+   * @return bool|string
+   *   TRUE on success, error message string on failure.
    */
   public function setRsvp($nid, $uid, $status) {
     $time = \Drupal::time()->getRequestTime();
+    
+    // Check capacity if user is trying to mark "going".
+    if ($status === 'going') {
+      $capacity_check = $this->checkCapacity($nid, $uid);
+      if ($capacity_check !== TRUE) {
+        return $capacity_check;
+      }
+    }
 
     // Use merge to handle both insert and update.
     $this->database->merge('event_rsvp')
@@ -57,6 +65,47 @@ class EventRsvpService {
       ])
       ->execute();
 
+    return TRUE;
+  }
+  
+  /**
+   * Checks if event has reached capacity.
+   *
+   * @param int $nid
+   *   The event node ID.
+   * @param int $uid
+   *   The user ID checking (to allow their own status change).
+   *
+   * @return bool|string
+   *   TRUE if space available, error message if full.
+   */
+  public function checkCapacity($nid, $uid) {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    
+    if (!$node || !$node->hasField('field_max_event_cap')) {
+      return TRUE;
+    }
+    
+    $capacity = $node->get('field_max_event_cap')->value;
+    
+    // If no capacity set or capacity is 0, no limit.
+    if (empty($capacity) || $capacity == 0) {
+      return TRUE;
+    }
+    
+    // Count current "going" RSVPs (excluding this user).
+    $going_count = $this->database->select('event_rsvp', 'r')
+      ->condition('nid', $nid)
+      ->condition('status', 'going')
+      ->condition('uid', $uid, '!=')
+      ->countQuery()
+      ->execute()
+      ->fetchField();
+    
+    if ($going_count >= $capacity) {
+      return 'This event is at capacity (' . $capacity . ' attendees). You can mark yourself as "Maybe" to join the waitlist.';
+    }
+    
     return TRUE;
   }
 

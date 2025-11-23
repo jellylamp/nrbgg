@@ -1,0 +1,13 @@
+uuid: 5a4de700-087c-4a48-be07-eb472284c149
+langcode: en
+status: true
+dependencies: {  }
+id: wide_image
+label: 'Wide Image'
+description: 'A wide image like a hero banner.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }
