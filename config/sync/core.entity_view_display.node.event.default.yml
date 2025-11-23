@@ -24,7 +24,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 102
+    weight: 4
     region: content
   field_event_date_and_time:
     type: timestamp
@@ -43,7 +43,7 @@ content:
         granularity: 2
         refresh: 60
     third_party_settings: {  }
-    weight: 101
+    weight: 3
     region: content
   field_formatted_text:
     type: text_default
@@ -68,11 +68,11 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 103
+    weight: 5
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 2
     region: content
 hidden: {  }
