@@ -1,0 +1,41 @@
+uuid: 4972c405-7525-49ec-a86f-a4dab08e79b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.hero_banner.field_hero_image
+    - field.field.paragraph.hero_banner.field_primary_hero_cta
+    - field.field.paragraph.hero_banner.field_secondary_hero_cta
+    - field.field.paragraph.hero_banner.field_title
+    - image.style.media_library
+    - paragraphs.paragraphs_type.hero_banner
+  module:
+    - media
+id: paragraph.hero_banner.preview
+targetEntityType: paragraph
+bundle: hero_banner
+mode: preview
+content:
+  field_hero_image:
+    type: media_thumbnail
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: media_library
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_primary_hero_cta: true
+  field_secondary_hero_cta: true

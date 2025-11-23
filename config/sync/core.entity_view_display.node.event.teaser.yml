@@ -1,0 +1,57 @@
+uuid: 5c444b0c-ac56-40df-8861-8e59229774ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.field_event_address
+    - field.field.node.event.field_event_date_and_time
+    - field.field.node.event.field_formatted_text
+    - field.field.node.event.field_hero_banner
+    - field.field.node.event.field_max_event_cap
+    - node.type.event
+  module:
+    - entity_reference_revisions
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  field_event_date_and_time:
+    type: timestamp
+    label: visually_hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_hero_banner:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_event_address: true
+  field_formatted_text: true
+  field_max_event_cap: true
