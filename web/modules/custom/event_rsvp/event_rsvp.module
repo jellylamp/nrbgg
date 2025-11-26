@@ -18,7 +18,7 @@ function event_rsvp_node_view(array &$build, EntityInterface $entity, EntityView
   $nid = $entity->id();
   $uid = $current_user->id();
   
-  // --- Full View Mode Logic ---
+  // Full View Mode Logic
   if ($entity->bundle() === 'event' && $view_mode === 'full') {
     $current_status = $rsvp_service->getRsvp($nid, $uid);
     $counts = $rsvp_service->getCounts($nid);
@@ -81,11 +81,15 @@ t('Please <a href="@login">log in</a> to RSVP for this event.', [
     ];
   }
   
-  // --- Teaser View Mode Logic ---
+  // Teaser View Mode Logic
   if ($entity->bundle() === 'event' && $view_mode === 'teaser') {
-    // Fetch data for the teaser.
-    $counts = $rsvp_service->getCounts($nid);
+    $title = $entity->label();
+    
+    $date_field = $entity->get('field_event_date_and_time')->view(['label' => 'hidden', 'type' => 'datetime_default']);
+    $date_time = \Drupal::service('renderer')->render($date_field);
+    
     $current_status = $current_user->isAuthenticated() ? $rsvp_service->getRsvp($nid, $uid) : NULL;
+    $counts = $rsvp_service->getCounts($nid);
     $lists = $current_user->isAuthenticated() ? $rsvp_service->getLists($nid) : [];
     
     $event_rsvp_teaser_data = [
@@ -94,6 +98,8 @@ t('Please <a href="@login">log in</a> to RSVP for this event.', [
       'current_status' => $current_status,
       'is_authenticated' => $current_user->isAuthenticated(),
       'lists' => $lists,
+      'title' => $title,
+      'date_time' => $date_time,
     ];
     
     // Check capacity info if field exists.
@@ -108,7 +114,6 @@ t('Please <a href="@login">log in</a> to RSVP for this event.', [
       ];
     }
     
-    // Inject the teaser template as a render element into the node's content.
     $build['event_rsvp_teaser'] = [
       '#theme' => 'event_rsvp_teaser',
       '#event_rsvp_teaser' => $event_rsvp_teaser_data,

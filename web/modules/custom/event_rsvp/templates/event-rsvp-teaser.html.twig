@@ -8,6 +8,19 @@
       <span class="spots-remaining">({{ rsvp.capacity.remaining }} {{ 'spots remaining'|t }})</span>
     </div>
   {% endif %}
+
+  <div class="teaser-details-column">
+    <div class="field--name-title">
+      <h2>{{ rsvp.title }}</h2>
+    </div>
+    {# You MUST ensure field_hero_banner is rendered in the view as a field, but HIDE it in Drupal display settings #}
+    <div class="field--name-field-hero-banner">
+      {{ content.field_hero_banner }}
+    </div>
+    <div class="field--name-field-event-date-and-time">
+      {{ rsvp.date_time }}
+    </div>
+  </div>
   
   {% if rsvp.is_authenticated %}
     

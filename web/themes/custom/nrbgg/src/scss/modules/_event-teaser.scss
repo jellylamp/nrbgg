@@ -26,6 +26,16 @@
     padding: $spacing-lg 0 $spacing-2xl;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     justify-content: center;
+
+    @include tablet {
+      grid-template-columns: repeat(2, minmax(400px, 1fr));
+      gap: $spacing-2xl;
+    }
+    
+    @include desktop {
+      grid-template-columns: repeat(2, minmax(500px, 1fr));
+      gap: $spacing-2xl;
+    }
   }
 }
 
@@ -96,15 +106,52 @@
     display: none;
   }
 
-  .node-teaser-rsvp {
+  // Hide the default Drupal fields that we are now rendering in the module's Twig.
+  .node--type--event.node--view-mode--teaser > .field--name-title,
+  .node--type--event.node--view-mode--teaser > .field--name-field-event-date-and-time,
+  .node--type--event.node--view-mode--teaser > .field--name-field-hero-banner {
+    display: none;
+  }
+  
+  .event-rsvp-teaser-wrapper {
     padding: $spacing-xl;
     
     @include desktop {
-      .event-rsvp-teaser-wrapper {
-        display: grid;
-        grid-template-columns: 2fr 1fr 2fr;
-        gap: $spacing-2xl;
-        align-items: start;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 2fr; 
+      gap: $spacing-2xl;
+      align-items: start;
+    }
+  }
+
+  // 1. Details Column 
+  .teaser-details-column {
+    @include desktop {
+      grid-column: 1;
+      text-align: left;
+    }
+    
+    .field--name-title {
+      display: block;
+      h2 {
+        margin: $spacing-sm 0 $spacing-sm 0;
+        font-size: $font-size-lg;
+      }
+    }
+    
+    .field--name-field-event-date-and-time {
+      display: block;
+      margin: 0 0 $spacing-lg 0;
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+    }
+
+    .field--name-field-hero-banner {
+      display: block;
+      margin-bottom: $spacing-md;
+      .paragraph--type--hero-banner {
+        height: 100px;
+        border-radius: $border-radius-base;
       }
     }
   }
@@ -114,6 +161,10 @@
     font-weight: $font-weight-medium;
     color: $text-secondary;
     margin-bottom: $spacing-lg;
+    
+    @include desktop {
+      grid-column: 2 / span 2;
+    }
     
     strong {
       color: $color-primary;
@@ -127,10 +178,6 @@
     &.capacity-full {
       color: $color-secondary;
     }
-    
-    @include desktop {
-        grid-column: 1 / -1; 
-    }
   }
 
   .event-rsvp-buttons.teaser-buttons {
@@ -140,6 +187,7 @@
     
     @include desktop {
       grid-column: 2;
+      grid-row: 2;
     }
     
     .event-rsvp-button.teaser-button {
@@ -174,16 +222,16 @@
     
     @include desktop {
       grid-column: 3;
-      flex-direction: row;
-      justify-content: space-between;
+      grid-row: 2;
+      flex-direction: column;
     }
     
     .event-rsvp-list.teaser-list {
       @include card-style($spacing-md);
-      flex: 1 1 30%;
+      flex: 1 1 100%;
       padding: $spacing-md;
       
-      .event-list-title {
+      h4.event-list-title {
         font-size: $font-size-base;
         color: $color-accent;
         margin-top: 0;
@@ -233,6 +281,12 @@
   
   .event-rsvp-login-message {
     padding: $spacing-md 0;
+    
+    @include desktop {
+      grid-column: 2 / span 2;
+      grid-row: 2;
+    }
+    
     p {
       color: $text-secondary;
       font-weight: $font-weight-medium;
