@@ -11,5 +11,7 @@
 
 // nodes
 @use 'nodes/admin-page-node';
-@use 'nodes/event-node';
-@use 'nodes/event-teaser';
+
+// module theme overrides
+@use 'modules/event-node';
+@use 'modules/event-teaser';

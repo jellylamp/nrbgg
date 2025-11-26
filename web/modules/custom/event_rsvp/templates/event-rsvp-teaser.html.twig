@@ -1,0 +1,65 @@
+{% set rsvp = event_rsvp_teaser %}
+
+<div class="event-rsvp-teaser-wrapper">
+  
+  {% if rsvp.capacity is not empty %}
+    <div class="event-capacity-info {{ rsvp.capacity.class }}">
+      <strong>{{ 'Capacity:'|t }}</strong> {{ rsvp.capacity.going }} / {{ rsvp.capacity.total }}
+      <span class="spots-remaining">({{ rsvp.capacity.remaining }} {{ 'spots remaining'|t }})</span>
+    </div>
+  {% endif %}
+  
+  {% if rsvp.is_authenticated %}
+    
+    <div class="event-rsvp-buttons teaser-buttons">
+      <a href="{{ path('event_rsvp.set_status', {'node': rsvp.nid, 'status': 'going'}) }}" 
+         class="event-rsvp-button teaser-button{{ rsvp.current_status == 'going' ? ' active' : '' }}"
+         data-status="going">
+        ✓ Going <span class="event-rsvp-count count-going">({{ rsvp.counts.going }})</span>
+      </a>
+      
+      <a href="{{ path('event_rsvp.set_status', {'node': rsvp.nid, 'status': 'maybe'}) }}" 
+         class="event-rsvp-button teaser-button{{ rsvp.current_status == 'maybe' ? ' active' : '' }}"
+         data-status="maybe">
+        ? Maybe <span class="event-rsvp-count count-maybe">({{ rsvp.counts.maybe }})</span>
+      </a>
+      
+      <a href="{{ path('event_rsvp.set_status', {'node': rsvp.nid, 'status': 'not_going'}) }}" 
+         class="event-rsvp-button teaser-button{{ rsvp.current_status == 'not_going' ? ' active' : '' }}"
+         data-status="not_going">
+        ✗ Not Going <span class="event-rsvp-count count-not-going">({{ rsvp.counts.not_going }})</span>
+      </a>
+    </div>
+
+    {% set lists_to_show = [
+      {'key': 'going', 'title': 'Going'|t, 'users': rsvp.lists.going}, 
+      {'key': 'maybe', 'title': 'Maybe'|t, 'users': rsvp.lists.maybe},
+      {'key': 'not_going', 'title': 'Not Going'|t, 'users': rsvp.lists.not_going}
+    ] %}
+    
+    <div class="event-rsvp-teaser-lists">
+      {% for list in lists_to_show %}
+        <div class="event-rsvp-list event-rsvp-list-{{ list.key }} teaser-list">
+          <h4 class="event-list-title">{{ list.title }} ({{ list.users|length }})</h4>
+          {% if list.users|length > 0 %}
+            <ul class="event-list-users">
+              {% for user in list.users|slice(0, 5) %}
+                <li><a href="{{ user.url }}">{{ user.name }}</a></li>
+              {% endfor %}
+              {% if list.users|length > 5 %}
+                <li class="event-list-more">... and {{ list.users|length - 5 }} more.</li>
+              {% endif %}
+            </ul>
+          {% else %}
+            <p class="event-rsvp-empty">{{ 'No one yet'|t }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div class="event-rsvp-login-message">
+      <p>{{ 'Please <a href="@login">log in</a> to RSVP for this event.'|t({'@login': path('user.login')}) }}</p>
+    </div>
+  {% endif %}
+</div>
