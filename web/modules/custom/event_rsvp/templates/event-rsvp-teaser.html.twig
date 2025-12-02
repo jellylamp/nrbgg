@@ -8,19 +8,6 @@
       <span class="spots-remaining">({{ rsvp.capacity.remaining }} {{ 'spots remaining'|t }})</span>
     </div>
   {% endif %}
-
-  <div class="teaser-details-column">
-    <div class="field--name-title">
-      <h2>{{ rsvp.title }}</h2>
-    </div>
-    {# You MUST ensure field_hero_banner is rendered in the view as a field, but HIDE it in Drupal display settings #}
-    <div class="field--name-field-hero-banner">
-      {{ content.field_hero_banner }}
-    </div>
-    <div class="field--name-field-event-date-and-time">
-      {{ rsvp.date_time }}
-    </div>
-  </div>
   
   {% if rsvp.is_authenticated %}
     
@@ -42,32 +29,6 @@
          data-status="not_going">
         ✗ Not Going <span class="event-rsvp-count count-not-going">({{ rsvp.counts.not_going }})</span>
       </a>
-    </div>
-
-    {% set lists_to_show = [
-      {'key': 'going', 'title': 'Going'|t, 'users': rsvp.lists.going}, 
-      {'key': 'maybe', 'title': 'Maybe'|t, 'users': rsvp.lists.maybe},
-      {'key': 'not_going', 'title': 'Not Going'|t, 'users': rsvp.lists.not_going}
-    ] %}
-    
-    <div class="event-rsvp-teaser-lists">
-      {% for list in lists_to_show %}
-        <div class="event-rsvp-list event-rsvp-list-{{ list.key }} teaser-list">
-          <h4 class="event-list-title">{{ list.title }} ({{ list.users|length }})</h4>
-          {% if list.users|length > 0 %}
-            <ul class="event-list-users">
-              {% for user in list.users|slice(0, 5) %}
-                <li><a href="{{ user.url }}">{{ user.name }}</a></li>
-              {% endfor %}
-              {% if list.users|length > 5 %}
-                <li class="event-list-more">... and {{ list.users|length - 5 }} more.</li>
-              {% endif %}
-            </ul>
-          {% else %}
-            <p class="event-rsvp-empty">{{ 'No one yet'|t }}</p>
-          {% endif %}
-        </div>
-      {% endfor %}
     </div>
 
   {% else %}

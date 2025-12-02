@@ -1,0 +1,22 @@
+{%
+  set classes = [
+    'node',
+    'node--type--' ~ node.bundle|clean_class,
+    view_mode ? 'node--view-mode--' ~ view_mode|clean_class,
+    not node.isPublished() ? 'node--unpublished',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <div class="event-wrapper">
+    <div class="left-column">
+      <a href="/node/{{ node.id }}" class="event-link-wrapper">
+        {{ content.field_hero_banner }}
+      </a>
+      {{ content.field_event_date_and_time }}
+    </div>
+    <div class="middle-column">
+      {{ content.field_event_address }}
+    </div>
+    {{ content.event_rsvp_teaser }}
+  </div>
+</div>
