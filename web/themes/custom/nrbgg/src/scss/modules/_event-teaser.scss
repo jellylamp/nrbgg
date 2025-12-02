@@ -96,6 +96,10 @@
       position: relative;
       overflow: hidden;
       border-radius: $border-radius-base $border-radius-base 0 0;
+
+      &:hover {
+        outline: 1px solid $color-primary;
+      };
       
       img {
         width: 100%;
@@ -116,7 +120,9 @@
   }
 
   .field--name-field-event-date-and-time {
-    margin: $spacing-md 0;
+    @include desktop {
+      margin: $spacing-md 0;
+    }
     font-size: $font-size-base;
     font-weight: $font-weight-medium;
     color: $color-accent;
