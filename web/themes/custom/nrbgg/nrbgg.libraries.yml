@@ -1,9 +1,9 @@
 # Main theme library.
 global:
   js:
-    js/nrbgg.js: {}
+    build/js/mobileMenu.js: {}
   css:
     theme:
-      build/css/style-imports.css: {}
+      build/css/styles.css: {}
 
 

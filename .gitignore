@@ -19,3 +19,5 @@ web/libraries/
 vendor/
 
 build/
+
+*.code-workspace

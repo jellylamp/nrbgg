@@ -1,12 +1,5 @@
-// ================================
-// IMPORTS
-// ================================
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
-
-// ================================
-// NAVIGATION COMPONENT
-// ================================
 
 #block-nrbgg-main-menu {
   @include full-width-container;
@@ -18,21 +11,24 @@
   position: relative;
   border-bottom: $border-width-md solid $color-primary;
 
-  // Top-level menu
   & > ul {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: $nav-gap;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
     @include reset-list;
-    padding: $nav-padding-y $nav-padding-x;
+    padding: $spacing-md $spacing-lg;
     width: 100%;
   }
 
-  // Parent items
   & > ul > li {
     position: relative;
     list-style: none;
+    border-bottom: 1px solid rgba($color-border, 0.3);
+    
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   & > ul > li > a {
@@ -40,90 +36,91 @@
     text-decoration: none;
     font-weight: $font-weight-medium;
     font-size: $font-size-md;
-    padding: $nav-link-padding-y $nav-link-padding-x;
-    display: inline-block;
+    padding: $spacing-lg;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
     transition: color $transition-base;
-    
-    @include animated-underline($border-width-lg, $gradient-accent, 8px);
     
     &:hover {
       color: $text-hover;
     }
   }
 
-  // Active page state
   & > ul > li.active > a,
   & > ul > li.active-trail > a {
     color: $color-active;
-    
-    &::before {
-      transform: scaleX(1);
-    }
   }
 
-  // Dropdown arrow with rotation
   & > ul > li > a::after {
-    content: ' ▾';
-    font-size: $font-size-sm;
-    margin-left: 6px;
+    content: '+';
+    font-size: $font-size-lg;
+    margin-left: auto;
+    padding-left: $spacing-md;
     display: inline-block;
     transition: transform $transition-base;
+    font-weight: $font-weight-normal;
+    line-height: 1;
   }
 
-  & > ul > li:hover > a::after {
-    transform: rotate(-180deg);
+  & > ul > li.menu-open > a::after {
+    content: '−';
   }
 
-  // Dropdown menus
   & ul li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: $gradient-secondary;
-    border-radius: $border-radius-md;
-    min-width: $dropdown-min-width;
-    box-shadow: $shadow-lg;
-    z-index: $z-dropdown;
-    margin-top: 0;
-    padding: $dropdown-padding-y 0;
-    padding-top: $spacing-md;
-    border: $border-width-sm solid $color-border;
-    @include reset-list;
-    @include fade-in-animation;
-  }
-
-  // Show dropdown on hover with animation
-  & ul li:hover > ul {
     display: block;
-    opacity: 1;
-    transform: translateY(0);
+    position: static;
+    background: rgba($color-charcoal, 0.5);
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+    border: none;
+    z-index: $z-dropdown;
+    @include reset-list;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
   }
 
-  // Dropdown list items
+  & > ul > li.menu-open > ul {
+    max-height: 1000px;
+    opacity: 1;
+  }
+
   & ul li ul li {
     margin: 0;
     list-style: none;
+    border-bottom: 1px solid rgba($color-border, 0.2);
+    
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
-  // Dropdown links
   & ul li ul li a {
     display: block;
-    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-    padding-left: 44px;
+    padding: $spacing-md $spacing-lg;
+    padding-left: $spacing-2xl;
+    min-height: 48px;
     color: $text-primary;
     font-weight: $font-weight-normal;
     font-size: $font-size-base;
     text-decoration: none;
     transition: background $transition-fast, color $transition-fast, padding-left $transition-fast;
     position: relative;
+    display: flex;
+    align-items: center;
     
-    // Meeple SVG icon before dropdown items
     &::before {
       content: '';
       position: absolute;
-      left: $dropdown-item-padding-x;
+      left: $spacing-lg;
       top: 50%;
       transform: translateY(-50%);
       width: 16px;
@@ -139,63 +136,105 @@
     &:hover {
       background-color: $color-hover-bg;
       color: $text-hover;
-      padding-left: 52px;
+      padding-left: $spacing-2xl;
       
       &::before {
         opacity: 1;
-        left: 24px;
+        left: calc($spacing-lg + 4px);
       }
     }
   }
 
-  // Remove arrow from items without submenus
   & > ul > li > a:only-child::after,
   & > ul > li:not(:has(ul)) > a::after {
     content: '';
     margin-left: 0;
   }
 
-  // Mobile responsive
-  @include mobile {
+  @include desktop {
     & > ul {
-      flex-direction: column;
-      gap: 0;
-      align-items: stretch;
-      padding: $spacing-md $spacing-lg;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: $nav-gap;
+      padding: $nav-padding-y $nav-padding-x;
+    }
+
+    & > ul > li {
+      border-bottom: none;
     }
 
     & > ul > li > a {
-      padding: $spacing-lg;
-      width: 100%;
-      box-sizing: border-box;
+      padding: $nav-link-padding-y $nav-link-padding-x;
+      display: inline-block;
+      width: auto;
       
-      &::before {
-        left: $spacing-lg;
-        right: $spacing-lg;
+      @include animated-underline($border-width-lg, $gradient-accent, 8px);
+      
+      &::after {
+        content: ' ▾';
+        font-size: $font-size-sm;
+        margin-left: 6px;
+        padding-left: 0;
       }
     }
 
-    & ul li ul {
-      position: static;
-      box-shadow: none;
-      border-radius: 0;
-      width: 100%;
-      margin-top: 0;
-      padding: 0;
-      border: none;
-      background: rgba($color-charcoal, 0.5);
-    }
-
-    & ul li ul li a {
-      padding-left: $spacing-2xl;
-      
-      &:hover {
-        padding-left: $spacing-2xl;
+    & > ul > li.active > a,
+    & > ul > li.active-trail > a {
+      &::before {
+        transform: scaleX(1);
       }
     }
 
     & > ul > li:hover > a::after {
-      transform: rotate(-90deg);
+      transform: rotate(-180deg);
+    }
+
+    & ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: $gradient-secondary;
+      border-radius: $border-radius-md;
+      min-width: $dropdown-min-width;
+      box-shadow: $shadow-lg;
+      padding: $dropdown-padding-y 0;
+      padding-top: $spacing-md;
+      border: $border-width-sm solid $color-border;
+      max-height: none;
+      overflow: visible;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity $transition-base, transform $transition-base;
+      @include fade-in-animation;
+    }
+
+    & ul li:hover > ul {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    & ul li ul li {
+      border-bottom: none;
+    }
+
+    & ul li ul li a {
+      padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+      padding-left: 44px;
+      
+      &::before {
+        left: $dropdown-item-padding-x;
+      }
+      
+      &:hover {
+        padding-left: 52px;
+        
+        &::before {
+          left: 24px;
+        }
+      }
     }
   }
 }

@@ -6,17 +6,18 @@
 
 .node--type--admin-page {
   @include standard-container;
-
+  
   .text-wrapper {
     display: grid;
     grid-template-rows: 1fr;
   }
-
+  
   .info-box {
     display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0;
+    padding-bottom: 20px;
     
     .version {
       grid-column: 1;
@@ -30,12 +31,33 @@
     }
     
     .field--name-field-download-pdf-link {
-      grid-column: 2;
-      grid-row: 1 / 3;
-      align-self: center;
+      grid-column: 1;
+      grid-row: 3;
       
       a {
         @include btn-primary;
+      }
+    }
+    
+    @include desktop {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      padding-bottom: 0;
+      
+      .version {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      
+      .last-updated {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      
+      .field--name-field-download-pdf-link {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        align-self: center;
       }
     }
   }

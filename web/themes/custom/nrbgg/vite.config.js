@@ -6,9 +6,14 @@ export default defineConfig({
     outDir: 'build',
     emptyOutDir: true,
     rollupOptions: {
-      input: resolve(__dirname, 'src/scss/style-imports.scss'),
+      input: {
+        styles: resolve(__dirname, 'src/scss/style-imports.scss'),
+        mobileMenu: resolve(__dirname, 'src/js/mobile-menu.js')
+      },
       output: {
-        assetFileNames: 'css/[name][extname]'
+        assetFileNames: 'css/[name][extname]',
+        entryFileNames: 'js/[name].js',
+        chunkFileNames: 'js/[name].js'
       }
     }
   }
