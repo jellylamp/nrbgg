@@ -2,38 +2,6 @@
 @use '../base/mixins' as *;
 
 .node--type--event {
-  & > div {
-    @include standard-container;
-  }
-  
-  .layout-content {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: $spacing-2xl;
-    padding-top: $spacing-xl;
-    padding-bottom: $spacing-2xl;
-
-    @include tablet {
-      grid-template-columns: 1fr 2fr;
-    }
-  }
-
-  #block-nrbgg-page-title {
-    display: none;
-  }
-  
-  .event-details-section {
-    grid-column: 1;
-    display: grid; 
-    gap: $spacing-lg;
-    
-    @include tablet {
-      order: 1;
-      grid-column: 1;
-    }
-  }
-
-  
   .field--name-field-event-date-and-time,
   .field--name-field-event-address,
   .field--name-field-max-event-cap {
@@ -62,104 +30,156 @@
       }
     }
   }
-
-  .event-main-content {
-    grid-column: 1;
-    
-    @include tablet {
-      order: 2;
-      grid-column: 2;
-    }
-  }
   
-  .field--name-field-formatted-text {
-    margin-bottom: $spacing-2xl;
+  &:not(.node--view-mode--teaser) {
+    & > div {
+      @include standard-container;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+      
+      @include desktop {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
     
-    .xdj266r, .x193iq5w {
+    .field--name-field-hero-banner {
+      grid-column: 1 / -1;
+    }
+    
+    .field--name-field-formatted-text {
+      grid-column: 1 / -1;
+      margin-bottom: $spacing-xl;
+      
+      .xdj266r, .x193iq5w {
         font-size: $font-size-base;
         color: $text-primary;
-    }
-  }
-  
-  .event-rsvp-wrapper {
-    @include card-style($spacing-xl);
-    display: grid; 
-    gap: $spacing-lg;
-  }
-  
-  .event-rsvp-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
-    justify-content: center;
-    gap: $spacing-md;
-
-    .event-rsvp-button {
-      @include btn-base;
-      padding: $spacing-sm $spacing-lg;
-      font-size: $font-size-base;
-      color: $text-primary;
-      background-color: $bg-secondary;
-      border: $border-width-sm solid $color-slate;
-      
-      .event-rsvp-count {
-        color: $color-primary;
-        font-weight: $font-weight-bold;
-        margin-left: 4px;
-      }
-
-      &:hover {
-        background-color: $bg-tertiary;
-        color: $text-hover;
-      }
-      
-      &.active {
-        @include btn-primary;
-        font-weight: $font-weight-bold;
-        border: none;
       }
     }
-  }
-  
-  .event-rsvp-lists {
-    h2.event-rsvp-lists-title {
-      font-size: $font-size-lg;
-      color: $color-accent;
-      border-bottom: $border-width-sm solid $color-border;
-      padding-bottom: $spacing-sm;
+    
+    .links {
+      display: none;
+    }
+    
+    .field--name-field-event-date-and-time {
+      @include desktop {
+        grid-column: 1;
+      }
+    }
+    
+    .field--name-field-event-address {
+      @include desktop {
+        grid-column: 2;
+      }
+    }
+    
+    .event-rsvp-wrapper {
+      @include card-style($spacing-xl);
+      display: grid; 
+      gap: $spacing-sm;
+      grid-column: 1 / -1;
+    }
+    
+    .event-capacity-info {
       margin-bottom: $spacing-md;
     }
     
-    .event-rsvp-list {
-      margin-top: $spacing-md;
-      padding: $spacing-md;
-      background-color: $bg-tertiary;
-      border-radius: $border-radius-base;
+    .event-rsvp-buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+      margin-bottom: $spacing-md;
       
-      h3 {
-        font-size: $font-size-base;
-        color: $text-secondary;
-        margin-top: 0;
+      @include desktop {
+        grid-template-columns: repeat(3, 1fr);
       }
       
-      ul {
-        @include reset-list;
-        li {
-          padding: $spacing-sm 0;
-          border-top: 1px solid rgba($color-slate, 0.5);
-          &:first-child {
-            border-top: none;
-          }
-          a {
-            color: $text-primary;
-            &:hover {
-              color: $text-hover;
+      .event-rsvp-button {
+        @include btn-base;
+        padding: $spacing-sm $spacing-lg;
+        font-size: $font-size-base;
+        color: $text-primary;
+        background-color: $bg-secondary;
+        border: $border-width-sm solid $color-slate;
+        
+        .event-rsvp-count {
+          color: $color-primary;
+          font-weight: $font-weight-bold;
+          margin-left: 4px;
+        }
+        
+        &:hover {
+          background-color: $bg-tertiary;
+          color: $text-hover;
+        }
+        
+        &.active {
+          @include btn-primary;
+          font-weight: $font-weight-bold;
+          border: none;
+        }
+      }
+    }
+    
+    .event-rsvp-lists {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+      
+      @include desktop {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto 1fr;
+      }
+      
+      h2.event-rsvp-lists-title {
+        font-size: $font-size-lg;
+        color: $color-accent;
+        border-bottom: $border-width-sm solid $color-border;
+        padding-bottom: $spacing-sm;
+        margin-bottom: $spacing-md;
+        
+        @include desktop {
+          grid-column: 1 / -1;
+        }
+      }
+      
+      .event-rsvp-list {
+        margin-top: 0;
+        padding: $spacing-md;
+        background-color: $bg-tertiary;
+        border-radius: $border-radius-base;
+        
+        h3 {
+          font-size: $font-size-base;
+          color: $text-secondary;
+          margin-top: 0;
+        }
+        
+        ul {
+          @include reset-list;
+          
+          li {
+            padding: $spacing-sm 0;
+            border-top: 1px solid rgba($color-slate, 0.5);
+            
+            &:first-child {
+              border-top: none;
+            }
+            
+            a {
+              color: $text-primary;
+              
+              &:hover {
+                color: $text-hover;
+              }
             }
           }
         }
-      }
-      .event-rsvp-empty {
-        color: $color-slate;
-        font-style: italic;
+        
+        .event-rsvp-empty {
+          color: $color-slate;
+          font-style: italic;
+        }
       }
     }
   }

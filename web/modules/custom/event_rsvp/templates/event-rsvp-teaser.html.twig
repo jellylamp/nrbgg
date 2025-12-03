@@ -1,14 +1,6 @@
 {% set rsvp = event_rsvp_teaser %}
 
 <div class="event-rsvp-teaser-wrapper">
-  
-  {% if rsvp.capacity is not empty %}
-    <div class="event-capacity-info {{ rsvp.capacity.class }}">
-      <strong>{{ 'Capacity:'|t }}</strong> {{ rsvp.capacity.going }} / {{ rsvp.capacity.total }}
-      <span class="spots-remaining">({{ rsvp.capacity.remaining }} {{ 'spots remaining'|t }})</span>
-    </div>
-  {% endif %}
-  
   {% if rsvp.is_authenticated %}
     
     <div class="event-rsvp-buttons teaser-buttons">
@@ -34,6 +26,12 @@
   {% else %}
     <div class="event-rsvp-login-message">
       <p>{{ 'Please <a href="@login">log in</a> to RSVP for this event.'|t({'@login': path('user.login')}) }}</p>
+    </div>
+  {% endif %}
+  {% if rsvp.capacity is not empty %}
+    <div class="event-capacity-info {{ rsvp.capacity.class }}">
+      <strong>{{ 'Event Capacity:'|t }}</strong> {{ rsvp.capacity.going }} / {{ rsvp.capacity.total }}
+      <span class="spots-remaining">({{ rsvp.capacity.remaining }} {{ 'spots remaining'|t }})</span>
     </div>
   {% endif %}
 </div>

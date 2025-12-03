@@ -1,5 +1,4 @@
 .event-rsvp-wrapper {
-  margin: 2rem 0;
   padding: 1.5rem;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -70,7 +69,6 @@
 }
 
 .event-rsvp-lists {
-  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
