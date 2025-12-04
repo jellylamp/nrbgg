@@ -43,8 +43,9 @@
       }
     }
     
-    .field--name-field-hero-banner {
+    [class*="field--name-field-hero"] {
       grid-column: 1 / -1;
+      width: 100%;
     }
     
     .field--name-field-formatted-text {

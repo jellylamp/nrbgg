@@ -2,23 +2,63 @@
 @use '../base/mixins' as *;
 
 .paragraph--type--hero-banner {
+  // 1. Universal Breakout
   width: 100vw;
-  height: 450px; // Fixed height so it's never "Huge"
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
   position: relative;
-  overflow: hidden;
-  background-color: $bg-secondary; // The color that fills the empty sides
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: $bg-secondary;
 
+  // 2. Default Height (When Buttons Exist)
+  // We force a minimum height so buttons have room to live
+  height: 280px; 
+  overflow: hidden;
+
+  @include desktop {
+    height: 450px;
+  }
+
+  // 3. Image Styling (Default)
+  .field--name-field-hero-image,
   img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain; // Ensures image is never cropped
-    object-position: center; // Centers the graphic in the 450px strip
+    // Zoom in slightly on mobile so text has a background
+    object-fit: cover; 
+    object-position: center;
+
+    @include desktop {
+      object-fit: contain;
+    }
   }
 
-  // The Dark Overlay
+  // ============================================
+  // CONDITIONAL: No Actual Buttons Found
+  // ============================================
+  // We check for 'a' tags. If the wrapper exists but is empty, this still triggers.
+  &:not(:has(.hero-buttons a)) {
+    // Release the fixed height constraints
+    height: auto;
+    min-height: 0;
+    
+    // Force the image to define the height (Shrink-wrap)
+    .field--name-field-hero-image,
+    img {
+      height: auto; // This kills the "Gap" below the image
+      object-fit: contain;
+    }
+
+    // Optional: Hide the dark overlay on graphic-only banners 
+    // so your "Ladies Night" colors stay bright
+    &::after {
+      display: none; 
+    }
+  }
+
+  // 4. Dark Overlay (Default)
   &::after {
     content: '';
     position: absolute;
@@ -26,7 +66,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    // Dark overlay covers both image and side-bars for a unified look
     background: linear-gradient(
       135deg,
       rgba(26, 32, 44, 0.6) 0%,
@@ -36,6 +75,7 @@
     z-index: 1;
   }
 
+  // 5. Content Overlay
   .hero-content-overlay {
     position: absolute;
     top: 50%;
@@ -48,27 +88,30 @@
     max-width: 900px;
   }
 
+  // 6. Title Styling
   .field--name-field-title {
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-md;
 
     & > div {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       color: $color-white;
-      line-height: 1.2;
+      line-height: 1.1;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
       margin: 0;
 
       @include desktop {
         font-size: 56px;
+        margin-bottom: $spacing-lg;
       }
     }
   }
 
+  // 7. Buttons
   .hero-buttons {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: $spacing-sm;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -82,15 +125,14 @@
   .field--name-field-primary-hero-cta,
   .field--name-field-secondary-hero-cta {
     width: 100%;
-
-    @include desktop {
-      width: auto;
-    }
+    @include desktop { width: auto; }
   }
 
   .field--name-field-primary-hero-cta div a {
     @include btn-primary;
     width: 100%;
+    padding: 12px 24px;
+    font-size: 14px;
     box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
 
     &:hover {
@@ -111,6 +153,9 @@
     border: 2px solid $color-white;
     color: $color-white;
     width: 100%;
+    padding: 10px 24px;
+    font-size: 14px;
+    backdrop-filter: blur(2px);
 
     &:hover {
       background-color: $color-white;
