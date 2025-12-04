@@ -1,20 +1,24 @@
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
 
-
 .paragraph--type--hero-banner {
   width: 100vw;
-  height: 450px;
+  height: 450px; // Fixed height so it's never "Huge"
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
   position: relative;
   overflow: hidden;
+  background-color: $bg-secondary; // The color that fills the empty sides
 
   img {
-    object-fit: cover;
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // Ensures image is never cropped
+    object-position: center; // Centers the graphic in the 450px strip
   }
 
+  // The Dark Overlay
   &::after {
     content: '';
     position: absolute;
@@ -22,10 +26,11 @@
     left: 0;
     right: 0;
     bottom: 0;
+    // Dark overlay covers both image and side-bars for a unified look
     background: linear-gradient(
       135deg,
-      rgba(26, 32, 44, 0.7) 0%,
-      rgba(45, 55, 72, 0.5) 100%
+      rgba(26, 32, 44, 0.6) 0%,
+      rgba(45, 55, 72, 0.4) 100%
     );
     pointer-events: none;
     z-index: 1;
@@ -44,79 +49,80 @@
   }
 
   .field--name-field-title {
-    margin-bottom: 32px;
+    margin-bottom: $spacing-lg;
 
     & > div {
-      font-size: 56px;
+      font-size: 32px;
       font-weight: 700;
       color: $color-white;
       line-height: 1.2;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
       margin: 0;
+
+      @include desktop {
+        font-size: 56px;
+      }
     }
   }
 
   .hero-buttons {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: $spacing-md;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    width: 100%;
+
+    @include desktop {
+      flex-direction: row;
+      gap: $spacing-lg;
+    }
+  }
+
+  .field--name-field-primary-hero-cta,
+  .field--name-field-secondary-hero-cta {
+    width: 100%;
+
+    @include desktop {
+      width: auto;
+    }
   }
 
   .field--name-field-primary-hero-cta div a {
-    display: inline-block;
-    padding: 16px 32px;
-    font-size: 16px;
-    font-weight: 700;
-    color: $color-white;
-    background: linear-gradient(90deg, $color-primary 0%, $color-secondary 100%);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    @include btn-primary;
+    width: 100%;
     box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
-  
 
     &:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 24px $color-primary;
     }
+
+    @include desktop {
+      width: auto;
+      padding: 16px 32px;
+      font-size: 16px;
+    }
   }
 
   .field--name-field-secondary-hero-cta div a {
-    display: inline-block;
-    padding: 14px 32px;
-    font-size: 16px;
-    font-weight: 500;
-    color: $color-white;
+    @include btn-base;
     background-color: transparent;
     border: 2px solid $color-white;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  
+    color: $color-white;
+    width: 100%;
+
     &:hover {
       background-color: $color-white;
       color: $color-dark-navy;
       transform: translateY(-3px);
       box-shadow: 0 8px 20px $color-slate;
     }
-  }
-}
 
-@media (max-width: 768px) {
-  .paragraph--type--hero-banner .field--name-field-title > div {
-    font-size: 32px;
-  }
-  
-  .paragraph--type--hero-banner .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .paragraph--type--hero-banner .field--name-field-primary-hero-cta div a,
-  .paragraph--type--hero-banner .field--name-field-secondary-hero-cta div a {
-    width: 100%;
-    max-width: 300px;
+    @include desktop {
+      width: auto;
+      padding: 14px 32px;
+      font-size: 16px;
+    }
   }
 }
