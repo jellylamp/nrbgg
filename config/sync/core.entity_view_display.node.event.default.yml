@@ -21,14 +21,14 @@ mode: default
 content:
   field_event_address:
     type: address_default
-    label: above
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
     weight: 4
     region: content
   field_event_date_and_time:
     type: timestamp
-    label: above
+    label: visually_hidden
     settings:
       date_format: medium
       custom_date_format: ''
@@ -61,18 +61,10 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_max_event_cap:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 5
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 2
     region: content
-hidden: {  }
+hidden:
+  field_max_event_cap: true
