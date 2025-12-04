@@ -32,35 +32,6 @@
   border-color: #999;
 }
 
-.event-rsvp-button.active {
-  border-color: #0073e6;
-  background: #e6f3ff;
-  color: #0073e6;
-}
-
-.event-rsvp-button[data-status="going"].active {
-  border-color: #28a745;
-  background: #d4edda;
-  color: #155724;
-}
-
-.event-rsvp-button[data-status="maybe"].active {
-  border-color: #ffc107;
-  background: #fff3cd;
-  color: #856404;
-}
-
-.event-rsvp-button[data-status="not_going"].active {
-  border-color: #dc3545;
-  background: #f8d7da;
-  color: #721c24;
-}
-
-.event-rsvp-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 .event-rsvp-count {
   font-size: 0.9rem;
   display: block;
